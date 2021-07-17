@@ -67,9 +67,7 @@ class CountryViewModel {
             self.countriesFiltered = self.countries.filter({ model in
                 model.name.lowercased().contains(name.lowercased())
             })
-        }
-        
-        
+        }        
         self.delegate?.didFinishWithSuccess()
     }
 }

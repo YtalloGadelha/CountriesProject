@@ -19,22 +19,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3fP-o4-Zbj">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="Wnx-f5-NRu">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="677"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="3fP-o4-Zbj" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="CGf-rP-SvN"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="3fP-o4-Zbj" secondAttribute="bottom" id="DST-Ed-dJJ"/>
-                            <constraint firstItem="3fP-o4-Zbj" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="YUw-UI-wle"/>
-                            <constraint firstAttribute="trailing" secondItem="3fP-o4-Zbj" secondAttribute="trailing" id="mxe-1p-Qvw"/>
+                            <constraint firstItem="Wnx-f5-NRu" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Cwp-47-b9c"/>
+                            <constraint firstItem="Wnx-f5-NRu" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="WhP-X2-an3"/>
+                            <constraint firstAttribute="trailing" secondItem="Wnx-f5-NRu" secondAttribute="trailing" id="g7q-bE-NJV"/>
+                            <constraint firstAttribute="bottom" secondItem="Wnx-f5-NRu" secondAttribute="bottom" constant="-10" id="p3l-4e-3Lb"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52" y="374.66266866566718"/>
+            <point key="canvasLocation" x="-276" y="352"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="splash" width="1920" height="1275"/>
+    </resources>
 </document>

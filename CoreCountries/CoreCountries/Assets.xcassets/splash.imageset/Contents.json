@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "ic_voltar.png",
+      "filename" : "europe-3483539_1920.jpg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "ic_voltar@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "ic_voltar@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

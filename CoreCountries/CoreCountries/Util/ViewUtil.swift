@@ -22,13 +22,4 @@ class ViewUtil {
         window?.rootViewController = navigationVC
         window?.makeKeyAndVisible()
     }
-    
-    /*class func openMovieDetailsVC(from vc: UIViewController, movie: Movies) {
-        
-        let destiny = MoviesDetailsViewController()
-        
-        destiny.movie = movie
-        destiny.modalPresentationStyle = .fullScreen
-        vc.navigationController?.pushViewController(destiny, animated: true)
-    }*/
 }

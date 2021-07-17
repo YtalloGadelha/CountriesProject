@@ -12,7 +12,8 @@ import WebKit
 class CountriesTableViewCell: UITableViewCell{
     
     var viewModel: CountryTableViewCellViewModel?
-
+    let webViewContainerHeightConstraint: NSLayoutConstraint? = nil
+    
     @available(iOS 13.0, *)
     lazy var loading: UIActivityIndicatorView = {
         
@@ -28,8 +29,13 @@ class CountriesTableViewCell: UITableViewCell{
         
         let config = WKWebViewConfiguration()
         
-        let obj = WKWebView(frame: .zero, configuration: config)
+        let obj = WKWebView(frame: CGRect(x: 0, y: 0, width: 100, height: 100), configuration: config)
         obj.translatesAutoresizingMaskIntoConstraints = false
+        obj.scrollView.isScrollEnabled = false;
+        obj.scrollView.bounces = false;
+        obj.contentMode = .scaleToFill
+        obj.sizeToFit()
+        obj.autoresizesSubviews = true
         
         return obj
     }()
@@ -124,7 +130,7 @@ class CountriesTableViewCell: UITableViewCell{
         self.language.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
         self.buttonFavorite.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
-        self.buttonFavorite.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -10).isActive = true
+        self.buttonFavorite.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -20).isActive = true
         self.buttonFavorite.heightAnchor.constraint(equalToConstant: 50).isActive = true
         self.buttonFavorite.widthAnchor.constraint(equalToConstant: 50).isActive = true
         
@@ -141,7 +147,7 @@ class CountriesTableViewCell: UITableViewCell{
                 // Fallback on earlier versions
             }
         }
-    
+        
         viewModel.downloaded(completion: { [weak self] image in
             DispatchQueue.main.async {
                 

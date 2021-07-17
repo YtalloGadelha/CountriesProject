@@ -24,7 +24,6 @@ public class CountryAPIRepositoryMock: CountryAPIProtocol {
         
         guard let error = self.error else { return completion(.success(CountryAPIParser.getAPIResponseMock())) }
         
-        completion(.failure(error))
-        
+        completion(.failure(error))        
     }
 }

@@ -160,10 +160,7 @@ extension CountryViewController: UITableViewDelegate, UITableViewDataSource{
             if let countryTableViewCellViewModel = self.countryViewModel.getTableViewCellViewModel(from: indexPath){
                 
                 cell.setupCell(viewModel: countryTableViewCellViewModel)
-            }
-            
-            //cell.accessoryType = .disclosureIndicator
-            
+            }            
             return cell
         }
         return UITableViewCell()
@@ -175,18 +172,14 @@ extension CountryViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        
-        //ViewUtil.openMovieDetailsVC(from: self, movie: movies[indexPath.row])
     }
 }
-
 
 //MARK: - Extension UISearchBarDelegate
 extension CountryViewController: UISearchBarDelegate {
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = false
-        //self.countryViewModel.filterByName(from: searchBar.text ?? "")
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -202,7 +195,6 @@ extension CountryViewController: UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        
         searchBar.text = ""
         self.countryViewModel.filterByName(from: "")
         searchBar.showsCancelButton = false

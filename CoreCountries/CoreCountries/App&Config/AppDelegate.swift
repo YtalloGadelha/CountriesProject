@@ -21,18 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return context        
     }
     
-     /*func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-         // Override point for customization after application launch.
-         self.window = window ?? UIWindow.init(frame: UIScreen.main.bounds)
-         
-         let viewModel = CountryViewModel(business: CountryBusinessAPI())
-         let viewController = CountryViewController(countryViewModel: viewModel)
-         self.window?.rootViewController = viewController
-         self.window?.makeKeyAndVisible()
-         
-         return true
-     }*/
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         self.window = window ?? UIWindow.init(frame: UIScreen.main.bounds)
