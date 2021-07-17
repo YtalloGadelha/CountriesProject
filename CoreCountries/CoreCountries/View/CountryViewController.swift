@@ -31,7 +31,7 @@ class CountryViewController: DefaultViewController {
         obj.translatesAutoresizingMaskIntoConstraints = false
         obj.clipsToBounds = true
         obj.layer.cornerRadius = 25
-        obj.placeholder = "Qual produto você procura?"
+        obj.placeholder = "Qual país você procura?"
         obj.tintColor = UIColor.red
         obj.delegate = self
         obj.backgroundColor = .white
@@ -46,14 +46,6 @@ class CountryViewController: DefaultViewController {
         
         return obj
     }()
-    
-    var descSearch: String = ""{
-        didSet {
-            if descSearch.isEmpty{
-                searchBar.resignFirstResponder()
-            }
-        }
-    }
     
     lazy var tableView: UITableView = {
         
@@ -127,8 +119,7 @@ class CountryViewController: DefaultViewController {
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.tableView.register(CountriesTableViewCell.self, forCellReuseIdentifier: "countriesCell")
-        
+        self.tableView.register(CountriesTableViewCell.self, forCellReuseIdentifier: "countriesCell")        
     }
     
     func updateData(){
@@ -143,7 +134,6 @@ extension CountryViewController: CountryViewModelDelegate{
         DispatchQueue.main.async {
             self.hideActivity()
             self.tableView.reloadData()
-            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
         }
     }
     
@@ -172,7 +162,7 @@ extension CountryViewController: UITableViewDelegate, UITableViewDataSource{
                 cell.setupCell(viewModel: countryTableViewCellViewModel)
             }
             
-            cell.accessoryType = .disclosureIndicator
+            //cell.accessoryType = .disclosureIndicator
             
             return cell
         }
@@ -191,32 +181,32 @@ extension CountryViewController: UITableViewDelegate, UITableViewDataSource{
 }
 
 
- //MARK: - Extension UISearchBarDelegate
- extension CountryViewController: UISearchBarDelegate {
-     
-     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-         descSearch = searchBar.text ?? ""
-         searchBar.showsCancelButton = false
-         //self.viewModel.fetch(descricaoProd: searchBar.text ?? "", offSet: self.groups.count)
-     }
-     
-     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-         descSearch = searchText
-     }
-     
-     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-         searchBar.endEditing(true)
-     }
-     
-     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-         self.searchBar.showsCancelButton = true
-     }
-     
-     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-         searchBar.text = ""
-         descSearch = ""
-         searchBar.showsCancelButton = false
-         
-         searchBar.resignFirstResponder()
-     }
- }
+//MARK: - Extension UISearchBarDelegate
+extension CountryViewController: UISearchBarDelegate {
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        //self.countryViewModel.filterByName(from: searchBar.text ?? "")
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.countryViewModel.filterByName(from: searchBar.text ?? "")
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.searchBar.showsCancelButton = true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+        searchBar.text = ""
+        self.countryViewModel.filterByName(from: "")
+        searchBar.showsCancelButton = false
+        searchBar.resignFirstResponder()
+        searchBar.endEditing(true)
+    }
+}

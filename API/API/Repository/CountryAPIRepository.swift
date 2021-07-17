@@ -11,9 +11,6 @@ import UIKit
 //URL Countries
 let basePath = "https://restcountries.eu/rest/v2?fields=name;languages;flag;capital;currencies;translations"
 
-//https://restcountries.eu/rest/v2/name/colombia?fullText=true
-//https://restcountries.eu/rest/v2/name/\(nameCountry)?fullText=true
-
 public class CountryAPIRepository: CountryAPIProtocol {
     
     public init(){}

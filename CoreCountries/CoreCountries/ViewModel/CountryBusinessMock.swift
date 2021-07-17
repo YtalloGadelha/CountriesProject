@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+public class CountryBusinessMock: CountryBusinessProtocol {
+    
+    let dummies: [CountryModel]
+    
+    public init(dummies: [CountryModel]) {
+        self.dummies = dummies
+    }
+    
+    public func getCountries(completion: @escaping (Result<[CountryModel], ErrorModel>) -> Void) {
+        completion(.success(self.dummies))
+    }
+}

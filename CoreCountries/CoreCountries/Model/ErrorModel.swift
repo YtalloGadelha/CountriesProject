@@ -8,4 +8,4 @@
 import Foundation
 import API
 
-typealias ErrorModel = CountryAPIError
+public typealias ErrorModel = CountryAPIError

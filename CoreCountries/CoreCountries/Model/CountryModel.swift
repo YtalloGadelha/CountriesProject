@@ -8,17 +8,17 @@
 import Foundation
 import API
 
-class CountryModel {
+public class CountryModel {
     
-    let name: String
-    let flag: String
-    let capital: String
-    let currencies: [Currencies]
-    let languages: [Languages]
-    let translations: Translations
-    var isFavorite: Bool = false
+    public let name: String
+    public let flag: String
+    public let capital: String
+    public let currencies: [Currencies]
+    public let languages: [Languages]
+    public let translations: Translations
+    public var isFavorite: Bool = false
     
-    init(name: String, flag: String, capital:String, currencies: [Currencies], languages: [Languages], translations: Translations, isFavorite: Bool = false) {
+    public init(name: String, flag: String, capital:String, currencies: [Currencies], languages: [Languages], translations: Translations, isFavorite: Bool = false) {
         self.name = name
         self.flag = flag
         self.capital = capital
@@ -28,7 +28,18 @@ class CountryModel {
         self.isFavorite = isFavorite
     }
     
-    static func getCountries(from api: CountryAPIResponse) -> [CountryModel] {
+    public init(name: String, flag: String, capital:String, translations: Translations?, isFavorite: Bool = false) {
+        
+        self.name = name
+        self.flag = flag
+        self.capital = capital
+        self.currencies = []
+        self.languages = []
+        self.translations = translations ?? Translations(brasil: "")
+        self.isFavorite = isFavorite
+    }
+    
+    public static func getCountries(from api: CountryAPIResponse) -> [CountryModel] {
         
         let data = api.countries.compactMap { apiCountry in
             CountryModel.init(name: apiCountry.name, flag: apiCountry.flag, capital: apiCountry.capital, currencies: apiCountry.currencies, languages: apiCountry.languages, translations: apiCountry.translations)

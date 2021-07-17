@@ -17,7 +17,7 @@ class CountryTableViewCellViewModel {
     }
     
     var name: String {
-        return self.model.translations.brasil
+        return self.model.name
     }
     
     var language: String {

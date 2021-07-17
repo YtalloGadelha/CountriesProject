@@ -16,10 +16,15 @@ class CountryViewModel {
     
     weak var delegate: CountryViewModelDelegate?
     private let business: CountryBusinessProtocol
-    private var countries: [CountryModel] = []
+    private var countries: [CountryModel] = [] {
+        didSet{
+            self.countriesFiltered = self.countries
+        }
+    }
+    private var countriesFiltered: [CountryModel] = []
     
     var tableViewCount: Int{
-        return self.countries.count
+        return self.countriesFiltered.count
     }
     
     init(business: CountryBusinessProtocol = CountryBusinessAPI()) {
@@ -43,12 +48,28 @@ class CountryViewModel {
     
     func getTableViewCellViewModel(from indexPath: IndexPath) -> CountryTableViewCellViewModel? {
         
-        if(indexPath.row > countries.count){
+        if(indexPath.row > countriesFiltered.count){
             return nil
         }
         
-        let model = countries[indexPath.row]
+        let model = countriesFiltered[indexPath.row]
         
         return CountryTableViewCellViewModel(countryModel: model)
+    }
+    
+    func filterByName(from name: String){
+        
+        if(name.isEmpty){
+            self.countriesFiltered = self.countries
+            
+        }
+        else{            
+            self.countriesFiltered = self.countries.filter({ model in
+                model.name.lowercased().contains(name.lowercased())
+            })
+        }
+        
+        
+        self.delegate?.didFinishWithSuccess()
     }
 }

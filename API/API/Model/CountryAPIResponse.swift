@@ -39,4 +39,8 @@ public struct Languages {
 
 public struct Translations {
     public let brasil: String
+    
+    public init(brasil: String){        
+        self.brasil = brasil
+    }
 }

@@ -30,7 +30,6 @@ class CountriesTableViewCell: UITableViewCell{
         
         let obj = WKWebView(frame: .zero, configuration: config)
         obj.translatesAutoresizingMaskIntoConstraints = false
-        //obj.navigationDelegate = self
         
         return obj
     }()
@@ -123,7 +122,6 @@ class CountriesTableViewCell: UITableViewCell{
         self.language.leadingAnchor.constraint(equalTo: self.flag.trailingAnchor, constant: 20).isActive = true
         self.language.trailingAnchor.constraint(equalTo: self.buttonFavorite.leadingAnchor, constant: -20).isActive = true
         self.language.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        //self.language.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -15).isActive = true
         
         self.buttonFavorite.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
         self.buttonFavorite.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -10).isActive = true
@@ -177,19 +175,3 @@ class CountriesTableViewCell: UITableViewCell{
         self.flag.load(request)
     }
 }
-
-//extension CountriesTableViewCell: WKNavigationDelegate{
-//
-//    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-//            self.flag.evaluateJavaScript("document.readyState", completionHandler: { (complete, error) in
-//                if complete != nil {
-//                    self.flag.evaluateJavaScript("document.body.scrollHeight", completionHandler: { (height, error) in
-//                        let heightWebView = height as! CGFloat
-//                        //heightWebView is the height of the web view
-//                    })
-//                }
-//            })
-//        }
-//    }
-//}

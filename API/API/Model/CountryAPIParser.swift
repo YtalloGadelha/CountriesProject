@@ -12,13 +12,11 @@ public struct CountryAPIParser {
     static func getCountry(from dict: [String: Any]) -> Country{
         
         let currenciesDicts = dict["currencies"] as? [[String: Any]] ?? [[:]]
-        //let currencies = CountryAPIParser.getCurrencies(from: currenciesDict)
         let currencies = currenciesDicts.compactMap({ dict in
             CountryAPIParser.getCurrencies(from: dict)
         })
         
         let languagesDicts = dict["languages"] as? [[String: Any]] ?? [[:]]
-        //let languages = CountryAPIParser.getLanguages(from: languagesDict)
         let languages = languagesDicts.compactMap({ dict in
             CountryAPIParser.getLanguages(from: dict)
         })
